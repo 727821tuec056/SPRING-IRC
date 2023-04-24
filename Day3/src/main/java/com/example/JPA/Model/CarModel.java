@@ -25,14 +25,12 @@ public class CarModel {
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
-	public int getCmodel() {
+	public int getEmodel() {
 		return emodel;
 	}
-	public void setCmodel(int cmodel) {
-		this.emodel = cmodel;
+	public void setEmodel(int emodel) {
+		this.emodel = emodel;
 	}
 	
-	
-
 	
 }

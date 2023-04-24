@@ -1,5 +1,7 @@
 package com.example.JPA.Service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +11,30 @@ import com.example.JPA.Repository.CarRepository;
 public class CarService {
 	@Autowired
 	public CarRepository crepo;
-	public CarModel saveinfo(CarModel c)
-	{
-		return crepo.save(c);
+
+	public CarModel saveinfo(CarModel cr) {
+		// TODO Auto-generated method stub
+		return crepo.save(cr);
 	}
 
+	public void deletedetails(int id) {
+		// TODO Auto-generated method stub
+		crepo.deleteById(id);
+		
+	}
+    
+	public Optional<CarModel> getdetails(int id) {
+		// TODO Auto-generated method stub
+		return crepo.findById(id);
+	}
+
+	public CarModel updatedetails(CarModel id) {
+		// TODO Auto-generated method stub
+		return crepo.saveAndFlush(id);
+	}
+
+
+	
+	
 }
 
