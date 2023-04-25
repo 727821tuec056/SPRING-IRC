@@ -42,7 +42,7 @@ public class BloodDonorController {
 	}
 	
 	//updating details
-	@PutMapping("update")
+	@PutMapping("/update")
 	public BloodDonorModel updatedetails(@RequestBody BloodDonorModel id)
 	{
 		return dser.updatedetails(id);
