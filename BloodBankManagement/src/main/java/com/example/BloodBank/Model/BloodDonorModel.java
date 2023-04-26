@@ -74,5 +74,5 @@ public class BloodDonorModel {
 	public void setDcity(String dcity) {
 		this.dcity = dcity;
 	}
-	
+	 
 }

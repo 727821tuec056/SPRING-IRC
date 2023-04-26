@@ -2,9 +2,13 @@ package com.example.BloodBank.Service;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -36,7 +40,27 @@ public BloodDonorModel updatedetails(BloodDonorModel id) {
 	return crepo.saveAndFlush(id);
 }
 	
-	
-	
+	//sorting ascending order
+public List <BloodDonorModel> sortAsce(String dname)
+{
+	return crepo.findAll(Sort.by(dname).ascending());
+}
+	//sort descending order
+public List <BloodDonorModel> sortDesce(String dname)
+{
+	return crepo.findAll(Sort.by(dname).descending());
+}
+
+public List<BloodDonorModel> paginationData(int pgnu, int pgs) {
+	// TODO Auto-generated method stub
+	Page<BloodDonorModel> p=crepo.findAll(PageRequest.of(pgnu, pgs));
+	return p.getContent();
+}
+
+public List<BloodDonorModel> paginationAndsorting(int pgnu, int pgs, String dname) {
+	// TODO Auto-generated method stub
+	Page<BloodDonorModel> p=crepo.findAll(PageRequest.of(pgnu, pgs,Sort.by(dname).descending()));
+	return p.getContent();
+}
 
 }
