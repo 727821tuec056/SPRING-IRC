@@ -3,6 +3,7 @@ package com.example.BloodBank.Controller;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.BloodBank.Model.BloodDonorModel;
+import com.example.BloodBank.Repository.BloodDonorRepository;
 import com.example.BloodBank.Service.BloodDonorService;
 
 @RestController
@@ -76,11 +78,46 @@ public class BloodDonorController {
 		return dser.paginationAndsorting(pgnu,pgs,dname);
 	}
 	
+	@Autowired
+	public BloodDonorRepository bdr;
+	
+	@GetMapping("/bloodData")
+	public List<BloodDonorModel> getD()
+	{
+		return bdr.getAllData();
+	}
+	@GetMapping("/byName/{id}")
+	
+	public List<BloodDonorModel> getName(@PathVariable("id")int did)
+	{
+		return bdr.bydname(did);
+	}
+	
+	@GetMapping("/startend/{start}/{end}")
+	public List<BloodDonorModel> statendId(@PathVariable("start")int start,@PathVariable("end")int end)
+	{
+		return bdr.startEnd(start,end);
+	}
+	
+	@DeleteMapping("/deletebyid/{id}/{name}")
+	public String deletePerson(@PathVariable("id")int id,@PathVariable("name") String name)
+	{
+		bdr.deleteId(id,name);
+		return "deleted";
+	}
+	
+	//Login
+	@PostMapping("/Login")
+	public String login(@RequestBody Map<String, String> logindata)
+	{
+		String username = logindata.get("username");
+		String password = logindata.get("password");
+		String result = dser.checklogin(username,password);
+		return result;
+	}
+	
+	}
 
-	
-	
-	
-		}
 	
 
 
