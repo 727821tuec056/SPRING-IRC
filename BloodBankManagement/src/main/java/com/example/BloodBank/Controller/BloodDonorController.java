@@ -3,7 +3,6 @@ package com.example.BloodBank.Controller;
 
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,15 +105,7 @@ public class BloodDonorController {
 		return "deleted";
 	}
 	
-	//Login
-	@PostMapping("/Login")
-	public String login(@RequestBody Map<String, String> logindata)
-	{
-		String username = logindata.get("username");
-		String password = logindata.get("password");
-		String result = dser.checklogin(username,password);
-		return result;
-	}
+	
 	
 	}
 

@@ -63,34 +63,7 @@ public List<BloodDonorModel> paginationAndsorting(int pgnu, int pgs, String dnam
 	return p.getContent();
 }
 
-         //Login
-public String checklogin(String username, String password) {
-	// TODO Auto-generated method stub
-	BloodDonorModel user=crepo.findByUsername(username);
-	if(user==null)
-	{
-		return"No User Found";
-	}
-	else
-	{
-		if(user.getPassword().equals(password))
-		{
-			return"Login Successfull";
-		}
-		else
-		{
-			return"Login Failed";
-		}
-	}
-}
+ 
 	
-public BloodDonorModel adduser(BloodDonorModel Bank)
-{
-	return crepo.save(Bank);
-}
-public List<BloodDonorModel>getuser()
-{
-	return crepo.findAll();
-}
 
 }

@@ -16,7 +16,7 @@ import jakarta.transaction.Transactional;
 public interface BloodDonorRepository extends JpaRepository<BloodDonorModel,Integer> {
 	
 	
-	BloodDonorModel findByUsername(String username);
+	
 	
 	
 //native query
