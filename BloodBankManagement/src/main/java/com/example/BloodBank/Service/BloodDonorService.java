@@ -46,9 +46,9 @@ public List <BloodDonorModel> sortAsce(String dname)
 	return crepo.findAll(Sort.by(dname).ascending());
 }
 	//sort descending order
-public List <BloodDonorModel> sortDesce(String dname)
+public List <BloodDonorModel> sortDesce(String dgroup)
 {
-	return crepo.findAll(Sort.by(dname).descending());
+	return crepo.findAll(Sort.by(dgroup).descending());
 }
 
 public List<BloodDonorModel> paginationData(int pgnu, int pgs) {

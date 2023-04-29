@@ -59,10 +59,10 @@ public class BloodDonorController {
 	}
 	
 	//sort by descending order
-	@GetMapping("sortDesce/{dname}")
-	public List<BloodDonorModel> sortPersons(@PathVariable("dname")String dname)
+	@GetMapping("sortDesce/{dgroup}")
+	public List<BloodDonorModel> sortPersons(@PathVariable("dgroup")String dgroup)
 	{
-		return dser.sortDesce(dname);
+		return dser.sortDesce(dgroup);
 	}
 	//pagination
 	@GetMapping("/pagination/{pgnu}/{pgs}")
