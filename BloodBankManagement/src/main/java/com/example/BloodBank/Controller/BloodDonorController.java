@@ -105,6 +105,12 @@ public class BloodDonorController {
 		return "deleted";
 	}
 	
+	@PutMapping("/updatequery/{id}/{name}")
+	public void updateByQuery(@PathVariable("id") int id,@PathVariable("name") String name)
+	{
+		bdr.updateByQuery(id,name);
+	}
+	
 	
 	
 	}
