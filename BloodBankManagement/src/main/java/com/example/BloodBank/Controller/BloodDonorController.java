@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.BloodBank.Model.BloodDonorModel;
 import com.example.BloodBank.Repository.BloodDonorRepository;
 import com.example.BloodBank.Service.BloodDonorService;
+
+
 
 @RestController
 public class BloodDonorController {
@@ -112,6 +115,30 @@ public class BloodDonorController {
 	}
 	
 	
+	//JPQL queries
+	@GetMapping("/jpqlget/{name}")
+	public List<BloodDonorModel>getdetailname(@PathVariable ("name") String name)
+	{
+		return bdr.getjpqlname(name);
+	}
+	
+	@GetMapping("/getbtw/{start}/{end}")
+	public List<BloodDonorModel>getbtw(@PathVariable("start")int start,@PathVariable("end")int end)
+	{
+		return bdr.getbtw(start,end);
+	}
+	
+	@DeleteMapping("/deletejpql/{id}")
+	public String deletejpqlid(@PathVariable("id") int id)
+	{
+		bdr.deletejpql(id);
+		return "Deleted Sucessfully";
+	}
+	@PutMapping("update/{a}/{b}")
+	public void updatejpql(@PathVariable("a") String a,@PathVariable("b")int b)
+	{
+		bdr.updateByQuery(a, b);
+	}
 	
 	}
 

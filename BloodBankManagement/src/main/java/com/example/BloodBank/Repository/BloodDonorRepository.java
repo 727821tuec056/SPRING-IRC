@@ -41,8 +41,26 @@ public interface BloodDonorRepository extends JpaRepository<BloodDonorModel,Inte
 	@Query(value="update blooddonor set did=:id where dname=:name",nativeQuery=true)
 	public void updateByQuery(@Param("id")int id,@Param("name") String name);
 
-	
 	//JPQL queries
+	
+	@Query("select d from BloodDonorModel d where dname=?1")
+	public List<BloodDonorModel> getjpqlname(String name);
+
+	
+	@Query("select d from BloodDonorModel d where id between ?1 and ?2")
+	public List<BloodDonorModel> getbtw(int start, int end);
+
+	
+	@Modifying
+	@Transactional
+	@Query("delete from BloodDonorModel where id=?1")
+	public void deletejpql(int id);
+
+	@Modifying
+	@Transactional
+	@Query("update BloodDonorModel set ddonationno =?1 where id=?2")
+	public void updateByQuery(String a, int b);
+	
 	
 
 	
